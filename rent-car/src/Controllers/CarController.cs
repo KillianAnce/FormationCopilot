@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace rentCar.Controllers;
-
-[ApiController]
 [Route("[controller]")]
 public class CarController : ControllerBase
 {
@@ -16,6 +14,8 @@ public class CarController : ControllerBase
         "Citadine", "Berline", "4x4", "Sport"
     ];
 
+    private static List<Car> _cars = new List<Car>();
+
     private readonly ILogger<CarController> _logger;
 
     public CarController(ILogger<CarController> logger)
@@ -24,21 +24,61 @@ public class CarController : ControllerBase
     }
 
     [HttpGet(Name = "GetCar")]
-    public IEnumerable<Car> Get()
+    public IEnumerable<Car> GetAll()
     {
-        return Enumerable.Range(1, 5).Select(index => new Car
-        {
-            RentalStartDate = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            RentalEndDate = DateOnly.FromDateTime(DateTime.Now.AddDays(index + 7)),
-            FuelCharge = Random.Shared.Next(10, 55),
-            Horses = Random.Shared.Next(70, 250),
-            extraInsurance = false,
-            Type = Type[Random.Shared.Next(Type.Length)],
-            Brand = Brand[Random.Shared.Next(Brand.Length)]
-        })
-        .ToArray();
+        return _cars;
     }
 
+    [HttpGet("{id}", Name = "GetCarById")]
+    public ActionResult<Car?> GetById(int id)
+    {
+        var car = _cars.FirstOrDefault(c => c.RentalId == id);
+        if (car == null)
+        {
+            return NotFound();
+        }
+       return car;
+    }
+
+    [HttpPost]
+    public ActionResult<Car> Create(Car car)
+    {
+        car.RentalId = _cars.Count + 1;
+         _cars.Add(car);
+        return CreatedAtRoute("GetCarById", new { id = car.RentalId }, car);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Car updatedCar)
+    {
+        var car = _cars.FirstOrDefault(c => c.RentalId == id);
+        if (car == null)
+        {
+            return NotFound();
+        }
+        car.RentalStartDate = updatedCar.RentalStartDate;
+        car.RentalEndDate = updatedCar.RentalEndDate;
+        car.FuelCharge = updatedCar.FuelCharge;
+        car.Horses = updatedCar.Horses;
+        car.extraInsurance = updatedCar.extraInsurance;
+        car.Type = updatedCar.Type;
+        car.Brand = updatedCar.Brand;
+        return NoContent();
+    }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var car = _cars.FirstOrDefault(c => c.RentalId == id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            _cars.Remove(car);
+            return NoContent();
+        }
+
+    
     // Liste des voitures pas loués
     // Liste des locations en cours
     // Liste des voitures des voitures réservés

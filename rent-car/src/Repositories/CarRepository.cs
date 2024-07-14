@@ -1,36 +1,36 @@
-using System.Collections.Generic;
-using System.Linq;
+using Entity;
 using Microsoft.EntityFrameworkCore;
-using YourNamespace.Models; // Replace "YourNamespace" with the actual namespace of your models
 
-namespace YourNamespace.Repositories // Replace "YourNamespace" with the actual namespace of your repositories
+namespace Repositories // Replace "YourNamespace" with the actual namespace of your repositories
 {
     public class CarRepository : ICarRepository // Replace "ICarRepository" with the actual interface name, if applicable
     {
-        private readonly YourDbContext _dbContext; // Replace "YourDbContext" with the actual name of your DbContext class
+        // Add a private readonly field for the DbContext
+        private readonly RentCarDbContext _dbContext;
 
-        public CarRepository(YourDbContext dbContext) // Replace "YourDbContext" with the actual name of your DbContext class
+        // Add a constructor that accepts the DbContext
+        public CarRepository(RentCarDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Car> GetAllCars()
+        public IEnumerable<CarEntity> GetAllCars()
         {
             return _dbContext.Cars.ToList();
         }
 
-        public Car GetCarById(int id)
+        public CarEntity GetCarById(int id)
         {
             return _dbContext.Cars.FirstOrDefault(c => c.Id == id);
         }
 
-        public void AddCar(Car car)
+        public void AddCar(CarEntity car)
         {
             _dbContext.Cars.Add(car);
             _dbContext.SaveChanges();
         }
 
-        public void UpdateCar(Car car)
+        public void UpdateCar(CarEntity car)
         {
             _dbContext.Entry(car).State = EntityState.Modified;
             _dbContext.SaveChanges();
@@ -47,7 +47,7 @@ namespace YourNamespace.Repositories // Replace "YourNamespace" with the actual 
         }
 
         // Function to only retrieve red cars
-        public IEnumerable<Car> GetRedCars()
+        public IEnumerable<CarEntity> GetRedCars()
         {
             return _dbContext.Cars.Where(c => c.Color == "Red").ToList();
         }

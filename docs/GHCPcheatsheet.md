@@ -16,13 +16,6 @@ Here are some useful shortcut commands for using GitHub Copilot:
 
 - `Ctrl + Shift + Enter` (or `Cmd + Shift + Enter` on Mac): Trigger GitHub Copilot to generate code based on the context of your code, but with even more context.
 
-
-### Things to try in the Copilot Chat Window
-
-<img src="image.png" width="325" height="500">
-
-- Select the code throwing error(s) and type `Handle error` in the chat.
-
 ### "/" Commands
 
 - Type `/api` in the chat to get the API for the code.
@@ -64,8 +57,6 @@ Here are some useful shortcut commands for using GitHub Copilot:
 ## In-Line Chat Shortcuts
 
 Press `Ctrl + I` to open inline GitHub Copilot Chat
-
-![alt text](image-1.png)
 
 - Type `/doc` in the chat to get the documentation for the code.
 

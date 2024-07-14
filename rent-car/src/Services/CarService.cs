@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using YourNamespace.Repositories; // Replace YourNamespace with the actual namespace of your repository
+using Entity;
+using Repositories;
 
 namespace YourNamespace.Services // Replace YourNamespace with the actual namespace of your service
 {
@@ -15,15 +16,16 @@ namespace YourNamespace.Services // Replace YourNamespace with the actual namesp
 
         public async Task<List<CarEntity>> GetAllCars()
         {
-            return await _carRepository.GetAllCars();
+            return _carRepository.GetAllCars().ToList();
         }
 
         // Add more methods as needed
+        
 
         // Example method:
-        public async Task<Car> GetCarById(int id)
+        public async Task<CarEntity> GetCarById(int id)
         {
-            return await _carRepository.GetCarById(id);
+            return _carRepository.GetCarById(id);
         }
     }
 }
