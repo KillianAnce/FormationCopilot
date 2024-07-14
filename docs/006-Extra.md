@@ -34,3 +34,15 @@ Dans le dossier `cicd` se trouve le fichier `ci.yaml` qui doit répondre aux exi
 - Pousser l'image dans un `Azure Container Registry`
 
 ## Générer une Infrastructure As Code
+Dans le dossier `terraform` se trouve les fichiers `main.tf` et `variable.tf`
+
+- Créer un groupe de resource  
+- Créer un virtual network  
+- Créer un Network security group  
+- Créer un Network interface security group association
+- Créer une machine virtuelle
+
+Demander à Copilot :
+- Changer le système d'exploitation de votre machine virtuelle
+- Changer le SKU de votre machine virtuelle
+

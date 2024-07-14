@@ -13,5 +13,12 @@ CTRL+SHIFT+P -> .NET : Nouveau projet -> Nunit
 ```
 
 Il existe 2 fichiers de tests dans le répertoire `/test` :
-- `UnitTests.cs` pour la définition de tests unitaires sur la couche services contenant la logique métier
-- `IntegrationTests.cs` pour la définition de tests d'intégration en utilisant les librairies Fixture & NSubsitute ou MoQ
+- `UnitTest.cs` pour la définition de tests unitaires sur la couche services contenant la logique métier  
+  - Utiliser AutoFixture pour générer des données.
+- `IntegrationTest.cs` pour la définition de tests d'intégration sur les différents endpoints que vous avez défini.
+  - Mettez en place les TI en utilisant les librairies Fixture & NSubsitute ou MoQ
+
+Pour lancer les tests, vous avez plusieurs options : 
+- Se positionner dans votre CLI sur le dossier `rent-car/test` 
+  - Saisir `dotnet test`
+- Utiliser la commande `make test` définis dans le fichier Makefile

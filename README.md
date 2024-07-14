@@ -15,37 +15,14 @@ Le plus important dans cette journée est de profiter du temps alloué pour test
 ## Recommandation
 L'environnement est déjà configuré pour fonctionner avec les Codespaces Github, vous pouvez trouver les fichiers de configuration dans le dossier .devcontainer.Pour commencer à programmer, il suffit de créer un nouvel espace de code et vous êtes prêt à partir, vous n'avez pas besoin d'installer quoi que ce soit.
 
-Si vous voulez
+## Reminder
+Vous avez un cheatsheet disponible [GHCP cheatsheet](docs/GHCPcheatsheet.md)
 
-## Hello World !
-
-### Instructions
-
-Placez-vous dans le dossier le dossier `HelloWorld`.
-`cd /HelloWorld`
-
-Les consignes sont spécifiées dans le fichier Program.cs dans la classe Main en commentaire
-
-## Prompting - Draw My House
-
-Cette section du fichier README explique comment visualiser le résultat de votre code P5. Pour cela, assurez-vous de cliquer sur l'option "Go Live" située en bas à droite de votre écran. Si cette partie affiche "Port : 5500" alors le server est déjà lancé.
-
-Un nouvel onglet va s'ouvrir, si ce n'est pas le cas, appuyez sur "ctrl + ù", onglet "Ports" puis "ctrl + clic" sur l'url dans la colone "Adresse transférée"
-
-Dans le nouvel onglet ouvrir, cliquer sur le dossier p5 
-
-## Rent-Car
-
-### A faire 
-
-
-With the previous exercises you have gone through some common activities that developers usually run:
-
-Create new features in the code
-Work with external APIs
-Create documentation
-Create tests
-However, there are many other things that Copilot can helkp you with. Feel free to explore other slash command in the Copilot chat like:
-
-/fix: to fix the problems in your code
-/explain: for Copilot to explain you what the code does
+## Labs
+- [Hello World](docs/001-Hello-World.md)
+- [Draw My House](docs/002-DrawMyHouse.md)
+- [Create a car rental](docs/003-Create-crud-api.md)
+- [Generation de tests](docs/004-Generate-tests.md)
+- [Generation de documentaion](docs/005-Generate-documentation.md)
+- [Extra (Mermaid,IaC,CI/CD)](docs/006-Extra.md)
+- [Challenge](docs/007-Challenge.md)

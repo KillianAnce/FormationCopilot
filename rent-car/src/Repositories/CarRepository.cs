@@ -1,9 +1,9 @@
-using Entity;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Repositories // Replace "YourNamespace" with the actual namespace of your repositories
+namespace Repositories 
 {
-    public class CarRepository : ICarRepository // Replace "ICarRepository" with the actual interface name, if applicable
+    public class CarRepository : ICarRepository
     {
         // Add a private readonly field for the DbContext
         private readonly RentCarDbContext _dbContext;
@@ -14,42 +14,29 @@ namespace Repositories // Replace "YourNamespace" with the actual namespace of y
             _dbContext = dbContext;
         }
 
-        public IEnumerable<CarEntity> GetAllCars()
-        {
-            return _dbContext.Cars.ToList();
-        }
-
-        public CarEntity GetCarById(int id)
-        {
-            return _dbContext.Cars.FirstOrDefault(c => c.Id == id);
-        }
-
         public void AddCar(CarEntity car)
         {
-            _dbContext.Cars.Add(car);
-            _dbContext.SaveChanges();
-        }
-
-        public void UpdateCar(CarEntity car)
-        {
-            _dbContext.Entry(car).State = EntityState.Modified;
-            _dbContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void DeleteCar(int id)
         {
-            var car = _dbContext.Cars.FirstOrDefault(c => c.Id == id);
-            if (car != null)
-            {
-                _dbContext.Cars.Remove(car);
-                _dbContext.SaveChanges();
-            }
+            throw new NotImplementedException();
         }
 
-        // Function to only retrieve red cars
-        public IEnumerable<CarEntity> GetRedCars()
+        public IEnumerable<CarEntity> GetAllCars()
         {
-            return _dbContext.Cars.Where(c => c.Color == "Red").ToList();
+            throw new NotImplementedException();
+        }
+
+        public CarEntity GetCarById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCar(CarEntity car)
+        {
+            throw new NotImplementedException();
         }
     }
 }

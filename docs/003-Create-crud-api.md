@@ -1,24 +1,59 @@
-# Créer un CRUD API avec .NET 8
+# Créer un CRUD API en .NET 8
 
-Pour créer un CRUD API avec .NET 8 en utilisant GitHub Copilot, vous pouvez suivre les étapes suivantes :
+## Contexte 
+Un couple en vacances en Provence souhaite louer une voiture pour explorer les villages pittoresques et les paysages magnifiques de la région. Ils recherchent un véhicule confortable et économique pour une durée de cinq jours.
 
-1. Commencez par créer un nouveau projet .NET 8 en utilisant la commande `dotnet new webapi` dans votre terminal.
+Un couple se rend à l'agence de location de voitures VoyageAuto, dont le slogan est "Profitez de vos vacances au maximum". Ils souhaitent choisir parmi un panel de véhicules disponibles pour explorer la région en toute liberté et confort pendant leur séjour.
 
-2. Une fois le projet créé, ouvrez le fichier `Startup.cs` et configurez les services et les middlewares nécessaires pour votre API.
+## Exercice
+Pour lancer le projet, vous avez plusieurs options : 
+- Utiliser les commandes suivantes : `make init-project` avant la première exécution et `make launch`
+- Se rendre dans le dossier `rent-car/src` et lancer `dotnet run`
 
-3. Créez un nouveau dossier dans votre projet pour stocker vos modèles de données. Vous pouvez utiliser la commande `mkdir Models` dans votre terminal.
+### Création des entités
+Se rendre dans le dossier `Entity`
+Les consignes sont présentes dans chacun des fichiers sur ce qui est nécessaire à de créer.
 
-4. À l'intérieur du dossier `Models`, créez une classe pour chaque modèle de données que vous souhaitez utiliser dans votre API. Par exemple, vous pouvez créer une classe `User` avec des propriétés telles que `Id`, `Name`, `Email`, etc.
+Vous allez devoir créer les entités suivantes :
+- Car
+- Customer
+- CarRental
 
-5. Créez un nouveau dossier dans votre projet pour stocker vos contrôleurs. Vous pouvez utiliser la commande `mkdir Controllers` dans votre terminal.
+Il faut aussi setup votre DBContext dans le fichier `RentCarDbContext.cs`.
 
-6. À l'intérieur du dossier `Controllers`, créez un contrôleur pour chaque modèle de données que vous avez créé précédemment. Par exemple, vous pouvez créer un contrôleur `UserController` avec des méthodes telles que `GetAllUsers`, `GetUserById`, `CreateUser`, `UpdateUser`, `DeleteUser`, etc.
+Se rendre dans `Program.cs` pour ajouter une base inmemory en utilisant le **RentCarDbContext**
 
-7. Implémentez la logique nécessaire dans chaque méthode de contrôleur pour effectuer les opérations CRUD correspondantes sur votre modèle de données.
+### Création du repository 
+Vous avez créer les entités, on va passer à l'étape suivante qui est de créer la partie respository qui permet d'accéder à la BDD.
+Se rendre dans le dossier `Repositories`
+- Créer les actions nécessaires dans `CarRepository.cs`  
+  - Il n'est pas nécessaire de créer toutes les actions
 
-8. Testez votre API en utilisant un outil tel que Postman ou Swagger pour envoyer des requêtes HTTP à vos différentes méthodes de contrôleur et vérifier les résultats.
+#### Extra : 
+Si vous avez du temps, vous pouvez vous amuser à faire les repositories `Customer` & `CarRental`
+Comme d'habitude, les consignes se trouvent dans les fichiers.
 
-Voilà, vous avez maintenant créé un CRUD API avec .NET 8 en utilisant GitHub Copilot. N'hésitez pas à personnaliser davantage votre API en fonction de vos besoins spécifiques. Bon codage !
+### Création du service Car
+Vous venez de créer la partie qui fait le lien avec la BDD, il est temps de mettre en place la partie logique métier.
+Rendez-vous dans le dossier `Services`
+- Créer les méthodes définies en commentaire
+
+#### Bonus : 
+Si vous avez du temps, vous pouvez vous amuser à faire les services `Customer` & `CarRental`
+Comme d'habitude, les consignes se trouvent dans les fichiers.
+
+### Création des controllers
+Vous venez de créer la partie logique métier, il est temps de mettre en place les endpoints pour accéder à ces données.
+
+Rendez-vous dans le dossier `Controllers`
+- Créer les différents endpoints définis en commentaire
+
+#### Bonus
+Si vous avez du temps, vous pouvez vous amuser à faire les controllers `Customer` & `CarRental`
+Comme d'habitude, les consignes se trouvent dans les fichiers.
+
+## Exercice bonus
+Création des endpoints suivant dans le fichier `TestController.cs`
 
 - **/DaysBetweenDates**: 
 
